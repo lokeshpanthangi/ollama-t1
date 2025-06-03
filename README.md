@@ -9,6 +9,8 @@ A lightweight Python command-line interface for interacting with Ollama's local 
 - Simple command-line interface for Ollama models
 - Support for all Ollama models (llama3, mistral, phi, etc.)
 - Non-streaming mode for complete responses
+- Helpful error messages when Ollama is not running
+- Windows batch file for easier usage
 - Minimal dependencies (only requires the `requests` library)
 - Easy to extend and customize
 
@@ -37,6 +39,8 @@ A lightweight Python command-line interface for interacting with Ollama's local 
 
 ## Usage
 
+### Python Script
+
 Run the script with the following command:
 
 ```bash
@@ -49,6 +53,16 @@ Or using the short form:
 python ollama_chat.py -m MODEL_NAME -p "Your prompt here"
 ```
 
+### Windows Batch File (Easier Method)
+
+On Windows, you can use the included batch file for a simpler interface:
+
+```bash
+chat.bat "Your prompt here" [model_name]
+```
+
+If model_name is not specified, llama3 will be used by default.
+
 ### Examples
 
 ```bash
@@ -57,6 +71,10 @@ python ollama_chat.py --model llama3 --prompt "Explain quantum computing in simp
 
 ```bash
 python ollama_chat.py -m mistral -p "Write a short poem about AI"
+```
+
+```bash
+chat.bat "Tell me a joke" phi
 ```
 
 ### Available Models
@@ -80,6 +98,14 @@ To pull a new model:
 ```bash
 ollama pull MODEL_NAME
 ```
+
+## Error Handling
+
+The script includes improved error handling to help you troubleshoot common issues:
+
+- If Ollama is not running, you'll get clear instructions on how to install and start it
+- If a model is not found, you'll get instructions on how to pull it
+- Other API errors are also handled with descriptive messages
 
 ## How It Works
 
